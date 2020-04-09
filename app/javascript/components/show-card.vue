@@ -47,11 +47,6 @@ export default {
 </script>
 
 <style scoped>
-.show-image {
-  width: 200px;
-}
-.show-card, .card{
-  background-color: #e9e9e9;
-}
+
 </style>
  */

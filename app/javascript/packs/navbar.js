@@ -3,7 +3,7 @@ import Vue from 'vue/dist/vue.esm'
 
 
 Vue.use(TurbolinksAdapter)
-import navbar from '../components/navbar.vue'
+import navbar from '../components/navbar-component.vue'
 
 document.addEventListener('turbolinks:load', () => {
     const app = new Vue({

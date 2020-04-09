@@ -17,13 +17,14 @@
         <div class="mx-auto">
           <vue-bootstrap-typeahead
             v-model="query"
-            :data="['Canada', 'USA', 'Mexico']"
+            :data="shows"
+            :serializer="s => s.show.name"
+            placeholder="Search for shows..."
             size="lg"
             inputClass="rounded-pill"
           >
             <template slot="append">
               <button
-                @click="searchRepositories"
                 class="btn rounded-pill border-0 ml-n5"
               >
               <i class="fa fa-search"></i>
@@ -62,13 +63,31 @@
 
 <script>
 import VueBootstrapTypeahead from "vue-bootstrap-typeahead";
+import axios from "axios";
+import debounce from "lodash.debounce";
+const API_URL = 'https://api.tvmaze.com/search/shows?q=:query'
 export default {
   data: function() {
-    return {};
+    return {
+      shows: [],
+      query: '',
+    };
   },
   props: ["currentUser"],
   components: {
     VueBootstrapTypeahead
+  },
+  methods: {
+    async getShows(query){
+      axios.get(API_URL.replace(':query', query))
+      .then((result) => {
+        this.shows = result.data
+      })
+    }
+  },
+
+  watch: {
+    query: debounce(function(query){ this.getShows(query); }, 500)
   }
 };
 </script>
