@@ -1,17 +1,11 @@
 <%= content_for :js do %>
-    <%= javascript_pack_tag 'shows', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_pack_tag 'shows/index', 'data-turbolinks-track': 'reload' %>
 <% end %>
-
-<div id="shows" class="text-primary display-4 container">
-<app></app>
-<div class="dropdown">
-  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    Dropdown button
-  </button>
-  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-    <a class="dropdown-item" href="#">Action</a>
-    <a class="dropdown-item" href="#">Another action</a>
-    <a class="dropdown-item" href="#">Something else here</a>
+<div id="shows" class="container">
+<div class="row">
+  <div class="col-md-12">
+    <show></show>
+  <show></show>
   </div>
 </div>
 </div>
