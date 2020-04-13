@@ -20,18 +20,12 @@ class ShowsController < ApplicationController
   end
 
   def show
-    @show = Show.find(params[:id])
+    show = Show.find(params[:id])
+    @show = Shows::FetchShowInfo.new.call(show.tvmaze)
   end
 
   def find_show
-    data = Net::HTTP.get(format_url("https://api.tvmaze.com/search/shows?q=#{params[:query]}"))
+    data = Shows::FindShow.new.call(params[:query])
     render json: data
-  end
-
-  private
-
-  def format_url(url)
-    escaped_address = URI.escape(url)
-    URI.parse(escaped_address)
   end
 end

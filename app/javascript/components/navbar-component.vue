@@ -32,7 +32,7 @@
               </button>
             </template>
           </vue-bootstrap-typeahead>
-          <li class="nav-item">
+         <!--  <li class="nav-item">
             <a class="nav-link" href="#">Shows</a>
           </li>
           <li class="nav-item dropdown" v-if="this.currentUser">
@@ -53,7 +53,7 @@
           </li>
           <li class="nav-item" v-else>
             <a class="nav-link" href="#">Sign In</a>
-          </li>
+          </li> -->
         </ul>
       </div>
     </div>
