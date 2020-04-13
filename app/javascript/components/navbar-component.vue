@@ -14,25 +14,24 @@
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNavDropdown">
-        <div class="mx-auto">
-          <vue-bootstrap-typeahead
+        
+        
+       
+        <ul class="navbar-nav ml-auto">
+            <vue-bootstrap-typeahead
             v-model="query"
             :data="shows"
             :serializer="s => s.show.name"
-            placeholder="Search for shows..."
-            size="lg"
+            placeholder="Search for shows"
             inputClass="rounded-pill"
+            @hit="selectedShow = $event"
           >
             <template slot="append">
-              <button
-                class="btn rounded-pill border-0 ml-n5"
-              >
-              <i class="fa fa-search"></i>
+              <button class="btn rounded-pill border-0 ml-n5">
+                <i class="fa fa-search"></i>
               </button>
             </template>
           </vue-bootstrap-typeahead>
-        </div>
-        <ul class="navbar-nav ml-auto">
           <li class="nav-item">
             <a class="nav-link" href="#">Shows</a>
           </li>
@@ -65,12 +64,17 @@
 import VueBootstrapTypeahead from "vue-bootstrap-typeahead";
 import axios from "axios";
 import debounce from "lodash.debounce";
-const API_URL = 'https://api.tvmaze.com/search/shows?q=:query'
+import Showguide from '../packs/general'
+let showguide = new Showguide();
+axios.defaults.headers.common["X-CSRF-Token"] = document
+  .querySelector('meta[name="csrf-token"]')
+  .getAttribute("content");
 export default {
   data: function() {
     return {
       shows: [],
-      query: '',
+      query: "",
+      selectedShow: ""
     };
   },
   props: ["currentUser"],
@@ -78,16 +82,29 @@ export default {
     VueBootstrapTypeahead
   },
   methods: {
-    async getShows(query){
-      axios.get(API_URL.replace(':query', query))
-      .then((result) => {
-        this.shows = result.data
+    async getShows(query) {
+      axios.get(showguide.find_shows_url().replace(":query", query)).then(result => {
+        this.shows = result.data;
       })
+      .catch(error => console.log(error));
+    },
+
+    saveShow() {
+      axios
+        .post(showguide.create_show_url(), {
+          show: this.selectedShow.show
+        })
+        .then(result => window.location.href = `/shows/${result.data}`);
     }
   },
 
   watch: {
-    query: debounce(function(query){ this.getShows(query); }, 500)
+    query: debounce(function(query) {
+      this.getShows(query);
+    }, 500),
+    selectedShow: function() {
+      this.saveShow();
+    }
   }
 };
 </script>

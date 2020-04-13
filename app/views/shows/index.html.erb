@@ -4,8 +4,9 @@
 <div id="shows" class="container">
 <div class="row">
   <div class="col-md-12">
-    <show></show>
-  <show></show>
+    <% @shows.each do |show| %>
+      <show :show="<%= show.to_json %>"></show>
+    <% end %>
   </div>
 </div>
 </div>

@@ -3,4 +3,5 @@ Rails.application.routes.draw do
   root to: 'shows#index'
 
   resources :shows
+  get 'shows/find/:query', to: 'shows#find_show'
 end
