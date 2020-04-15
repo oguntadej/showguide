@@ -1,7 +1,7 @@
 <template>
-  <nav class="navbar navbar-expand-lg navbar-dark navbar-dark-bg">
+  <nav class="navbar navbar-expand-lg navbar-light">
     <div class="container">
-      <a class="navbar-brand" href="#">Showguide</a>
+      <a class="navbar-brand" href="/">Showguide</a>
       <button
         class="navbar-toggler"
         type="button"

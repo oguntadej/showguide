@@ -1,28 +1,36 @@
 /* <template>
-  <div class="row border mt-5 rounded p-2 show-card">
-    <div class="col-2 py-3">
-      <img :src="show.avatar" class="card-img img-fluid show-image" />
-    </div>
-    <div class="col-10 pt-3 row">
-      <div class="card border-0 col-12">
-        <div class="card-body">
-          <h5 class="card-title font-weight-bold">{{show.title}}</h5>
-          <p class="card-text" v-html="show.description"></p>
-          <p class="card-text">
-           <!--  <button type="button" class="btn btn-sm btn-primary border">
-              I want to watch
-              <span class="badge badge-light">4</span>
-            </button>&nbsp;
-            <button type="button" class="btn btn-sm btn-success" @click="testing()">
-              <i class="fa fa-heart"></i> &nbsp;
-              Recommend
-              <span class="badge badge-light">{{this.recommendation}}</span>
-            </button> &nbsp; -->
-            <small class="text-muted">{{show.genre.join(', ')}}</small> &nbsp;
-          </p>
+  <div class="show-card mb-2 col-12">
+    <div class="card">
+      <div class="card-body row">
+        <div class="col-2">
+          <img :src="show.avatar" class="img-fluid show-avatar" />
+        </div>
+        <div class="col-10 show-description">
+          <h5>{{show.title}}</h5>
+          <p v-html="truncate(show.description, 600)"></p>
+          <p class="font-weight-bold">{{show.genre.join(', ')}}</p>
         </div>
       </div>
     </div>
+    <!--  <div class="card">
+      <div class="card-header">
+        <span class="font-weight-bold">{{show.title}}</span>
+        <button
+          type="button"
+          class="btn btn-sm float-right"
+          :class="recommended"
+          @click="testing()"
+        >
+          <i class="fa fa-heart"></i>
+          {{this.recommendation}}
+        </button>
+      </div>
+      <div class="card-body">
+        <p class="card-text">
+          <img :src="show.avatar" class="img-fluid show-image" />
+        </p>
+      </div>
+    </div>-->
   </div>
 </template>
 
@@ -39,6 +47,19 @@ export default {
   methods: {
     testing() {
       this.recommendation++;
+    },
+    truncate(value, length) {
+      if (value.length > length) {
+        return value.substring(0, length) + "...";
+      } else {
+        return value;
+      }
+    }
+  },
+
+  computed: {
+    recommended() {
+      return this.recommendation > 0 ? "btn-success" : "btn-outline-success";
     }
   }
 };

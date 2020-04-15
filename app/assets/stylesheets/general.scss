@@ -1,20 +1,21 @@
-a.navbar-brand {
-    font-family: 'Libre Baskerville', serif;
-    color: #ffffff !important;
+
+.navbar{
+    background-color: #ffffff !important;
+    border-bottom: 3px solid #FE968F;
 }
 
-.navbar-dark-bg{
-    background-color: #000 !important;
+a.navbar-brand, a.navbar-brand:hover {
+    color: #FE968F !important;
+    font-family: 'Libre Baskerville', serif;
 }
 
 body{
-    background-color: #343a40 !important;
-    color: #ffffff;
-    font-family: 'Source Sans Pro', sans-serif !important;
+    font-size: 15px !important;
+    font-weight: 300 !important;
+    background-color: #F3F3F3 !important;
 }
 
 .navbar-nav{
-    font-family: 'Source Sans Pro', sans-serif;
     a.nav-link{    
         color: #ffffff !important;
     }
@@ -25,4 +26,8 @@ body{
         color: #000 !important; 
         text-decoration: none;
     }
+}
+
+.small{
+    font-weight: 300 !important;
 }

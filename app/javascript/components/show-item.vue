@@ -5,11 +5,11 @@
         <img :src="show.image.medium" class="card-img img-fluid show-header-image" />
       </div>
       <div class="col-md-8 mt-4">
-        <h3 class="show-name">
+        <h3 class="show-name font-weight-bold">
           {{show.name}}
-          <span class="small">(2002 - Present)</span>
+          <span class="small">({{show.status}})</span>
         </h3>
-        <p class="small" v-html="show.summary"></p>
+        <p v-html="show.summary"></p>
         <p>{{show.genres.join(', ')}}</p>
       </div>
       <div class="col-md-2 mt-5">
@@ -36,7 +36,7 @@
       <div class="col-md-3 mx-4 p-4 border rounded">
         <h4>Info</h4>
         <p class="small">
-          <span class="font-weight-bold">{{show.network.name}} ({{show.status}})</span><br>
+          <span class="font-weight-bold">{{showNetwork}}</span><br>
           <span>Network</span>
         </p>
         <p class="small" v-if="show.status == 'Running'">
@@ -65,10 +65,14 @@ export default {
  props: ['show'],
  computed: {
    lastEpisodeAirDate(){
+     console.log(this.show);
       return this.show._embedded.previousepisode.airdate;
    },
    trailerUrl(){
      return `https://www.youtube.com/embed?listType=search&list=${this.show.name}`
+   },
+   showNetwork(){
+     return this.show.network == null ? this.show.webChannel.name : this.show.network.name
    }
  }
 };

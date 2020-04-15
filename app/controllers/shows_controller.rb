@@ -16,7 +16,7 @@ class ShowsController < ApplicationController
   end
 
   def index
-    @shows = Show.all
+    @shows = Show.order(created_at: :desc)
   end
 
   def show
