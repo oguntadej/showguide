@@ -3,7 +3,7 @@
     <div class="show-image">
       <img :src="show.avatar" class="img-fluid show-avatar" />
       <p class="mt-3 mb-2 font-weight-bold">{{show.title}}</p>
-       <p v-html="truncate(show.description, 120)" class="pr-5"></p>
+       <p v-html="truncate(show.description, 120)" class="pr-1"></p>
     </div>
    <!--  <div class="card">
       <div class="card-body row">
