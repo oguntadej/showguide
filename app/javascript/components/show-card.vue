@@ -1,9 +1,14 @@
 /* <template>
-  <div class="show-card mb-2 col-12">
-    <div class="card">
+  <div class="show-card mb-5">
+    <div class="show-image">
+      <img :src="show.avatar" class="img-fluid show-avatar" />
+      <h5 class="mt-3 mb-2 font-weight-bold">{{show.title}}</h5>
+       <p v-html="truncate(show.description, 120)" class="pr-5"></p>
+    </div>
+   <!--  <div class="card">
       <div class="card-body row">
         <div class="col-2">
-          <img :src="show.avatar" class="img-fluid show-avatar" />
+          <img :src="show.avatar" class="img-fluid" />
         </div>
         <div class="col-10 show-description">
           <h5>{{show.title}}</h5>
@@ -11,7 +16,7 @@
           <p class="font-weight-bold">{{show.genre.join(', ')}}</p>
         </div>
       </div>
-    </div>
+    </div> -->
     <!--  <div class="card">
       <div class="card-header">
         <span class="font-weight-bold">{{show.title}}</span>

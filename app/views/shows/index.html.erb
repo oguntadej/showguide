@@ -4,7 +4,7 @@
 <div id="shows" class="container">
 <div class="row mt-5">
     <% @shows.each do |show| %>
-     <a href="<%= show_url(show.id) %>">
+     <a href="<%= show_url(show.id) %>" class="col-md-4">
         <show :show="<%= show.to_json %>"></show>
      </a>
     <% end %>
