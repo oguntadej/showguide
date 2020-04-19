@@ -12,7 +12,7 @@ class ShowsController < ApplicationController
       description: data[:summary],
       genre: data[:genres]
     )
-    render json: show.id
+    render json: "#{show.id}-#{show.title.parameterize}"
   end
 
   def index

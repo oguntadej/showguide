@@ -8,5 +8,6 @@ FactoryBot.define do
     watchlists_count { 0 }
     recommendations_count { 0 }
     editor_pick { false }
+    slug { Faker::Lorem.word }
   end
 end

@@ -2,7 +2,7 @@
   <div class="show-card mb-5">
     <div class="show-image">
       <img :src="show.avatar" class="img-fluid show-avatar" />
-      <h5 class="mt-3 mb-2 font-weight-bold">{{show.title}}</h5>
+      <p class="mt-3 mb-2 font-weight-bold">{{show.title}}</p>
        <p v-html="truncate(show.description, 120)" class="pr-5"></p>
     </div>
    <!--  <div class="card">
@@ -54,11 +54,7 @@ export default {
       this.recommendation++;
     },
     truncate(value, length) {
-      if (value.length > length) {
-        return value.substring(0, length) + "...";
-      } else {
-        return value;
-      }
+      return value.length > length ? value.substring(0, length) + "..." : value;
     }
   },
 

@@ -7,3 +7,34 @@
     width: 280px;
   }
 }
+
+#show{
+  .show-header {
+    box-shadow: inset 0 0 0 2000px rgba(0,0,0,0.65);
+    height: 500px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center right;
+}
+.show-info{
+  background-color: #ffffff;
+  word-wrap: break-word;
+  max-height: 400px;
+}
+.show-header-image {
+  width: 400px;
+  margin-top: -70px;
+}
+.videoWrapper {
+  position: relative;
+  padding-bottom: 56.25%; /* 16:9 */
+  height: 0;
+}
+.videoWrapper iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+}

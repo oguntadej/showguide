@@ -9,7 +9,6 @@ class CreateShows < ActiveRecord::Migration[6.0]
       t.integer :watchlists_count, index: true
       t.integer :recommendations_count, index: true
       t.boolean :editor_pick, index: true
-
       t.timestamps
     end
   end
