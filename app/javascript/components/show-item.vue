@@ -38,7 +38,7 @@
           <p class="small" v-if="show.status == 'Running'">
             <span
               class="font-weight-bold"
-            >{{show.schedule.days.join(', ')}} at {{show.schedule.time}}</span>
+            >{{show.schedule.days.join(', ')}}</span>
             <br />
             <span>Schedule</span>
           </p>
@@ -89,7 +89,7 @@ export default {
       return this.show._embedded.previousepisode.airdate;
     },
     trailerUrl() {
-      return `https://www.youtube.com/embed?listType=search&list=${this.show.name}`;
+      return `https://www.youtube.com/embed?listType=search&list=${this.show.name} show trailer`;
     },
     showNetwork() {
       return this.show.network == null
